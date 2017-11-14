@@ -7,10 +7,25 @@ For Ghost 0.10.x and 0.11.x support check out
 
 ## Installation
 
+### Option A
+
 ```shell
-npm install ghost-storage-adapter-s3
+npm install ghost-storage-adapter-do
 mkdir -p ./content/adapters/storage
-cp -r ./node_modules/ghost-storage-adapter-s3 ./content/adapters/storage/s3
+cp -r ./node_modules/ghost-storage-adapter-do ./content/adapters/storage/s3
+```
+### Option B
+
+This option will allow you to keep the module within your *node_modules* directory.
+
+```shell
+npm install ghost-storage-adapter-do
+mkdir -p ./content/adapters/storage/s3
+cat << _EOF_ > ./content/adapters/storage/s3/index.js
+'use strict'
+module.exports = require('ghost-storage-adapter-do');
+_EOF_
+
 ```
 
 ## Configuration
@@ -25,7 +40,7 @@ cp -r ./node_modules/ghost-storage-adapter-s3 ./content/adapters/storage/s3
     "pathPrefix": "YOUR_OPTIONAL_BUCKET_SUBDIRECTORY",
     "region": "YOUR_REGION_SLUG",
     "secretAccessKey": "YOUR_SECRET_ACCESS_KEY",
-    "endpoint": "YOUR_OPTIONAL_ENDPOINT_URL (only needed for 3rd party S3 providers)"
+    "endpoint": "YOUR_OPTIONAL_ENDPOINT_URL (Required for 3rd party S3 providers)"
   }
 }
 ```
@@ -39,7 +54,7 @@ AWS_DEFAULT_REGION
 GHOST_STORAGE_ADAPTER_S3_PATH_BUCKET
 GHOST_STORAGE_ADAPTER_S3_ASSET_HOST  // optional
 GHOST_STORAGE_ADAPTER_S3_PATH_PREFIX // optional
-GHOST_STORAGE_ADAPTER_S3_ENDPOINT // optional
+GHOST_STORAGE_ADAPTER_S3_ENDPOINT // required for usage on DigitalOcean
 ```
 
 ## License

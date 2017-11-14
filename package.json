@@ -48,7 +48,7 @@
     "snazzy": "^5.0.0",
     "standard": "^8.3.0"
   },
-  "homepage": "https://github.com/cmndrsp0ck/ghost-storage-adapter-s3#readme",
+  "homepage": "https://github.com/cmndrsp0ck/ghost-storage-adapter-s3",
   "license": "ISC",
   "keywords": [
     "adapter",
